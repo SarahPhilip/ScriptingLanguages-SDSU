@@ -1,0 +1,194 @@
+* {
+    margin: 0; 
+    padding: 0;
+}
+html, body, h1, form, fieldset, legend, ol, li {
+	margin: 0;
+	padding: 0;
+}
+body {
+	color: #111111;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding: 20px;
+}
+h1 {
+	font-size: 28px;
+	margin-bottom: 20px;
+}
+legend {
+	padding: 10px;
+}
+form#register {
+	background: #9cbc2c;
+	border-radius: 5px;
+	counter-reset: fieldsets;
+	padding: 20px;
+}
+form#register fieldset {
+	border: none;
+}
+form#register legend {
+	color: #384313;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 1px #c0d576;
+}
+form#register ol li {
+	background: rgba(255,255,255,.3);
+	border-color: rgba(255,255,255,.6);
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	margin-bottom: 2px;
+}	
+form#register ol ol li {
+	background: none;
+	border: none;
+	float: left;
+	margin-bottom: 0;
+}
+form#register ol ol li label {
+	padding: 0;
+	margin-right: 45px;
+}
+form#register label {
+	float: left;
+	font-size: 13px;
+	width: 110px;
+	margin-left: 5px;
+}
+form#register label.line_spacing {
+	line-height: 1.25;
+}
+form#payment fieldset fieldset legend {
+	color: #111111;
+	font-size: 13px;
+	font-weight: normal;
+	padding-bottom: 0;
+}
+form#register fieldset fieldset label {
+	background:none no-repeat left 50%;
+	line-height: 20px;
+	padding: 0 0 0 30px;
+	width: auto;
+}
+form#register fieldset fieldset label:hover {
+	cursor: pointer;
+}
+form#register input:not([type=radio]) {
+	background: #FFF;
+	border: 2px solid #FFF;	
+	border-radius: 3px;
+	font: italic 13px Georgia, "Times New Roman", Times, serif;
+	outline: none;
+	padding: 5px;
+	width: 200px;
+	margin-top: 3px;
+}
+form#register textarea {
+	background: #FFF;
+	border: none;
+	border-radius: 3px;
+	font: italic 13px Georgia, "Times New Roman", Times, serif;
+	outline: none;
+	padding: 5px;
+	width: 350px;
+}
+form#register input:not([type=submit]):focus,
+form#register textarea:focus,
+form#register select:focus {
+	background: #eaeaea;
+}
+form#register input[type=radio] {
+	float: left;
+	margin-right: 5px;
+    margin-top: 4px;
+}
+form#register input.three {
+	width: 27px;
+	margin-left: 0;
+	margin-right: 10px;
+}
+form#register input.four {
+	width: 37px;
+	margin-left: 5px;
+}
+form#register button {
+	background: #384313;
+	border: none;
+	border-radius: 20px;
+	color: #ffffff;
+	font: 15px Georgia, "Times New Roman", Times, serif;
+	letter-spacing: 1px;
+	margin: 15px;
+	padding: 7px 25px;
+	text-shadow: 0 1px 1px #000000;
+	text-transform: uppercase;
+}
+form#register button:hover {
+	background: #1e2506;
+	cursor: pointer;
+}
+.buttonHolder{
+    text-align: center;
+}
+.right {
+	float: right !important;
+}
+.left {
+	float: left;
+}
+.clear {
+	clear: both;
+}
+.spacing {
+	margin-right: 50px;
+}
+.styled-select {
+	height: 25px;
+    width: 210px;
+    border-radius: 3px;
+    border: 2px solid #fff;
+   }
+
+ form#register input.space {
+ 	margin-right: 80px;
+ }
+form#register input.space1 {
+	width: 27px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+input.border_invalid, select.border_invalid{
+    border: 2px solid red !important;
+}
+input[type=radio].border_invalid {
+	outline: 2px solid red;
+}
+input.border_none{
+    border: 2px solid #FFF !important;
+} 
+
+input.valid, textarea.valid, select.valid{
+    border: 2px solid #FFF !important;
+}
+input[type=radio].border_valid {
+	outline: 2px solid #b9cf6a;
+}  
+#message_line {
+	color: red;
+	margin-top: 15px;
+} 
+.required {
+	font-size: 11px;
+}
+.error {
+	color: red;
+}
+#pic {
+	padding-left: 100px;
+}

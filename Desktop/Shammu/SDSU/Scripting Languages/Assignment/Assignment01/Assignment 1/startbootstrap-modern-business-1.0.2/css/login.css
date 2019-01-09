@@ -1,0 +1,93 @@
+* {
+    margin: 0; 
+    padding: 0;
+}
+html, body, h1, form, fieldset, legend, ol, li {
+	margin: 0;
+	padding: 0;
+}
+body {
+	color: #111111;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding: 20px;
+}
+fieldset {
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#login {
+	/*background: #9cbc2c;*/
+	/*background: #A03C29;*/
+	border-radius: 5px;
+	padding: 20px;
+}
+#login ol {
+	background: #A03C29;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#login ol li {
+	background: rgba(255,255,255,.3);
+	border-color: rgba(255,255,255,.6);
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	margin: 15px;
+}	
+
+#login label {
+	float: left;
+	font-size: 13px;
+	width: 110px;
+	margin-left: 5px;
+}
+#login label.line_spacing {
+	line-height: 1.25;
+}
+
+#login fieldset {
+	border: none;
+}
+
+#login input {
+	background: #FFF;
+	border: 2px solid #FFF;	
+	border-radius: 3px;
+	font: italic 13px Georgia, "Times New Roman", Times, serif;
+	outline: none;
+	padding: 5px;
+	width: 200px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+#login ol ol li {
+	background: none;
+	border: none;
+	float: left;
+	margin-bottom: 0;
+}
+
+#login button {
+	background: #78787B;
+	border: none;
+	border-radius: 20px;
+	color: #ffffff;
+	font: 15px Georgia, "Times New Roman", Times, serif;
+	letter-spacing: 1px;
+	margin: 15px;
+	padding: 7px 25px;
+	text-shadow: 0 1px 1px #000000;
+	text-transform: uppercase;
+}
+#login button:hover {
+	background: #1e2506;
+	cursor: pointer;
+}
+.buttonHolder{
+    text-align: center;
+}

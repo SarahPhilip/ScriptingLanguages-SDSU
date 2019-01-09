@@ -1,0 +1,202 @@
+<?php # Script 18.1 - header.html
+// This page begins the HTML header for the site.
+
+// Start output buffering:
+ob_start();
+
+// Initialize a session:
+session_start();
+if (isset($_SESSION['expire'])) {
+        $now = time(); // Checking the time now when home page starts.
+        echo "{$_SESSION['expire']}";
+        if ($now > $_SESSION['expire']) {
+        	echo "{$_SESSION['expire']}";
+            session_destroy();
+            setcookie (session_name(), '', time()-3600); // Destroy the cookie.
+			$url = BASE_URL . 'login.php'; // Define the URL.
+			echo "Your session has expired! <a href='login.php'>Login here</a>";
+			ob_end_clean(); // Delete the buffer.
+			header("Location: $url");
+			exit(); // Quit the script.
+            
+        }
+        else { //Starting this else one [else1]
+
+        	$_SESSION['start'] = time(); // Taking now logged in time.
+        	setcookie ('last_login_time', time());
+            // Ending a session in 30 minutes from the starting time.
+            $_SESSION['expire'] = $_SESSION['start'] + (3 * 60);
+        }
+    }
+// Check for a $page_title value:
+if (!isset($page_title)) {
+	$page_title = 'User Registration';
+}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title><?php echo $page_title; ?></title>
+	<style type="text/css" media="screen">@import "includes/layout.css";</style>
+	<!-- Bootstrap Core CSS -->
+	<link href="includes/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="includes/css/modern-business.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" type="text/css" href="includes/css/login.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/index.css" />
+
+	
+	<!-- Pagination and Sorting -->
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+	<link rel="stylesheet" type="text/css" href="typography.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+	<div id="Header">User Registration</div>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.php?p&sorting=ASC&field=Name">Azteka Book Corp</a>
+			</div>
+			
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="index.php?p&sorting=ASC&field=Name">Home</a>
+					</li>
+					<li>
+						<a href="about.php">About</a>
+					</li>
+					<li>
+						<a href="best_seller.php?p&sorting=ASC&field=Name">Best Sellers</a>
+					</li>
+                    <?php # Script 18.2 - footer.html
+					// This page completes the HTML template.
+
+						// Display links based upon the login status:
+                    if (isset($_SESSION['user_id'])) {
+
+                    	// echo '<li>
+                    	// <a href="logout.php" title="Logout">Logout</a>
+                    	// </li>
+
+                    	// <li>
+                    	// <a href="change_password.php" title="Change Your Password">Member Admin</a>
+                    	// </li>
+
+                    	// ';
+
+						// Add links if the user is an administrator:
+	                    	if ($_SESSION['user_level'] == 10) {
+	                    		echo '
+		                    		<li>
+		                    		<a href="change_password.php" title="Member Admin">Member Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="logout.php" title="Logout">Logout</a>
+		                    		</li>
+	                    		';
+	                    	}
+	                    	elseif ($_SESSION['user_level'] == 20) {
+	                    		echo '
+		                    		<li>
+		                    		<a href="change_password.php" title="Member Admin">Member Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="author_admin.php?p&sorting=ASC&field=Name" title="Author Admin">Author Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="logout.php" title="Logout">Logout</a>
+		                    		</li>
+	                    		';
+	                    	}
+	                    	elseif ($_SESSION['user_level'] == 30) {
+	                    		echo '
+		                    		<li>
+		                    		<a href="change_password.php" title="Member Admin">Member Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="author_admin.php?p&sorting=ASC&field=Name" title="Author Admin">Author Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="publisher_admin.php?p&sorting=ASC&field=Name" title="Publisher Admin">Publisher Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="logout.php" title="Logout">Logout</a>
+		                    		</li>
+	                    		';
+	                    	}
+	                    	elseif ($_SESSION['user_level'] == 40) {
+	                    		echo '
+		                    		<li>
+		                    		<a href="change_password.php" title="Member Admin">Member Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="author_admin.php?p&sorting=ASC&field=Name" title="Author Admin">Author Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="publisher_admin.php?p&sorting=ASC&field=Name" title="Publisher Admin">Publisher Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="admin_admin.php?p&sorting=ASC&field=Name&user_level" title="Admin Admin">Admin Admin</a>
+		                    		</li>
+		                    		<li>
+		                    		<a href="logout.php" title="Logout">Logout</a>
+		                    		</li>
+	                    		';
+	                    	}
+
+					} else { //  Not logged in.
+						echo '<li>
+						<a href="register.php" title="Register for the Site">Register</a>
+						</li>
+
+						<li>
+						<a href="login.php" title="Login">Login</a>
+						</li>
+
+						
+
+						';
+					}
+					?>
+				</ul>
+			</div>
+			<?php
+            	// Welcome the user (by name if they are logged in):
+			echo '<div id = "welcome">';
+			if (isset($_SESSION['first_name'])) {
+				echo "Welcome {$_SESSION['first_name']}";
+				// echo "{$_SESSION['expire']}";
+				// echo "$now";
+				// if ($now > $_SESSION['expire']) {
+				// 	echo "YES";
+				// }
+				// else
+				// 	echo "NO";
+			}
+			echo '</div>';
+			
+			?>
+		</div>
+<!-- /.container -->
+	</nav>
+<div id="Content">
+<!-- End of Header -->
